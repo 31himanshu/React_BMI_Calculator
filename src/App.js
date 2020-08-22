@@ -1,46 +1,44 @@
 import React, { Component } from "react";
 import ReactDOM from "react-dom";
-import Header from "./Header";
-import Height from "./Height";
-import Weight from "./Weight";
-import {connect} from "react-redux"
-import "./styles.css"
+import { connect } from "react-redux";
+import File from "./File";
+import First from "./First";
+import { BrowserRouter as Router, Route, Link, Switch } from "react-router-dom";
+import "./styles.css";
+import Nav from "./Nav";
+
+import SignUp from "./Formik";
+
+
 class App extends Component {
- 
-      
-  
-  
+
   render() {
- 
-  return (
-     <div className="App">
-       <Header/>
-       <div>
-       <Height height={this.props.height}/> 
-       <input onChange={this.props.onAgeUp}/>
-   </div>
- <div >
- <Weight weight={this.props.mass}/>   
- <input onChange={this.props.onAgeDown}/>
- 
- </div>
- <button className="button" onClick={this.props.onUpdateBmi}>checkbmi</button>
- <div>
-   <div className="result"><p>{this.props.bmi}</p>
-   </div>
- </div>
-       </div>
-      
-       
+
+    return (
+
+      <Router>
+        <Switch>
+         
+        <Route path="/bmimale" component={File} />
+        
+        <Route path="/" component={Nav} />
+
+        <Route path="/female" component={First} />
+
+        
+        <Route path="/login" component={SignUp} />
+     </Switch>
+      </Router>
     );
   }
 }
-
 const mapStateToProps=(state)=>{
   return {
   height:state.height,
   mass:state.mass,
-  bmi:state.bmi
+  bmi:state.bmi,
+  result:state.result,
+  input:state.input
   }
   };
   const mapDispatchToProps=(dispatch)=>{
@@ -53,6 +51,4 @@ const mapStateToProps=(state)=>{
   });
     
   }
-  
-
-export default connect(mapStateToProps,mapDispatchToProps)  (App);
+export default connect(mapStateToProps,mapDispatchToProps)( App);
