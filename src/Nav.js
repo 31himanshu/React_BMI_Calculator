@@ -13,6 +13,7 @@ return(
       <Nav.Link href="/">Home</Nav.Link>
       <Nav.Link href="/doc">Doc</Nav.Link>
       <Nav.Link href="/bmimale">About</Nav.Link>
+      <Nav.Link href="/contact">Contact Us</Nav.Link>
     </Nav>
    
   </Navbar>
